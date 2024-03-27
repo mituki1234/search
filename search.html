@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <style>
+        .Top{
+            text-align: center;
+        }
+    </style>
+    <body>
+    <div class="Top">
+    <p id="random">kamakiri</p>
+    <div id="fetching"></div>
+    <input type="search" id="search" autocomplete="off" value="" height="50px" name="a" placeholder="キーワードを検索">
+    <input type="button" id="sbutton" value="search" onclick="search()">
+    </div>
+    <script>
+        let list=[4,8,16,32,64,128,256,512,1024,2056]
+        let math = Math.floor(Math.random() * 9) + 1;
+        
+        setInterval(randomnumber,100);
+        function search(){
+            var sContent = document.getElementById('search');
+            var Search = "https://www.google.com/search?q=" + document.getElementById('search').value;
+            console.log(document.getElementById('search').value)
+            window.open(Search, "_blank");
+            fetching = fetch("http://ooshimapcclass.sakura.ne.jp/ruby.html").then(r=>{
+                return r.json();
+            });
+            document.getElementById('fetching').innerHTML = fetching;
+        }
+        function randomnumber(){
+            math = Math.floor(Math.random() * 9) + 1;
+            document.getElementById('random').innerHTML = list[math];
+        }
+    </script>
+    </body>
+</html> 
